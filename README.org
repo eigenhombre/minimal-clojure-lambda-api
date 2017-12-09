@@ -1,0 +1,44 @@
+#+TITLE: minimal-clojure-lambda-api
+#+DATE: 2017-12-07 Thu
+#+OPTIONS: toc:nil num:nil
+
+Minimal example using Clojure, API Gateway, Lambda, and Terraform.
+
+* Building
+
+** Jar file for the lambda
+#+BEGIN_SRC
+lein uberjar
+#+END_SRC
+
+** AWS environment
+Define the following environment variables:
+#+BEGIN_SRC
+export TF_VAR_AWS_ACCOUNT_ID=...   # Your integer AWS account ID
+export TF_VAR_AWS_ACCESS_KEY=...
+export TF_VAR_AWS_SECRET_KEY_ID=...
+#+END_SRC
+Then,
+#+BEGIN_SRC
+terraform init    # Only once
+terraform plan    # Every time you change anything
+#+END_SRC
+
+If you're happy with the plan,
+#+BEGIN_SRC
+terraform apply
+#+END_SRC
+
+** Everything
+
+For convenience, after you have done =terraform init= once, you can
+simply type =make= and it will build both the =uberjar= and do the
+Terraform step as needed.  This will take a few seconds if no changes
+are needed, and up to a minute if building the jar and uploading it
+over a slow-ish connection.
+
+* Output
+
+Terraform will return the URL for your API, which accept any HTTP verb
+and any path after the =/production= portion.  Narrowing that scope
+and adding extra functionality is up to you! ;-)
