@@ -42,3 +42,8 @@ over a slow-ish connection.
 Terraform will return the URL for your API, which accept any HTTP verb
 and any path after the =/production= portion.  Narrowing that scope
 and adding extra functionality is up to you! ;-)
+
+* Cleanup
+
+To destroy everything, =make clean= runs =terraform destroy= and
+removes the build directory =target=.

@@ -8,7 +8,7 @@ target/example.jar: src/example/*.clj
 
 clean:
 	cd tf && terraform destroy
-	rm target/example.jar
+	rm -rf target
 
 .PHONY: tf
 tf: target/example.jar
