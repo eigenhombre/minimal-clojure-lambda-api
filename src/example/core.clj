@@ -1,5 +1,4 @@
 (ns example.core
-  (:gen-class)
   (:require [cheshire.core :as json]
             [clojure.java.io :refer [reader writer]]
             [uswitch.lambada.core :refer [deflambdafn]]))
